@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hint;
   final Icon icon;
-  const CustomTextField({super.key, required this.icon, required this.hint});
+  final Function onClick;
+  const CustomTextField(
+      {super.key,
+      required this.onClick,
+      required this.icon,
+      required this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +20,10 @@ class CustomTextField extends StatelessWidget {
           return "please enter correct text ";
         return null;
       },
+      onChanged: (value) {
+        onClick(value);
+      },
+      obscureText: hint == 'Enter your mail' ? false : true,
       decoration: InputDecoration(
           prefixIcon: icon,
           filled: true,
