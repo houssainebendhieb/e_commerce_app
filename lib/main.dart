@@ -1,7 +1,14 @@
+import 'package:e_commerce_app/provider/adminhome.dart';
+import 'package:e_commerce_app/provider/modelhud.dart';
+import 'package:e_commerce_app/screens/addproduct.dart';
+import 'package:e_commerce_app/screens/adminpage.dart';
+import 'package:e_commerce_app/screens/editscreen.dart';
+import 'package:e_commerce_app/screens/homepage.dart';
 import 'package:e_commerce_app/screens/login_screen.dart';
 import 'package:e_commerce_app/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -9,11 +16,23 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp((MaterialApp(
-    initialRoute: LoginScreen.id,
-    routes: {
-      LoginScreen.id: (context) => LoginScreen(),
-      SignUpScreen.id: (context) => SignUpScreen(),
-    },
-  )));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (conext) => ModelHud()),
+        ChangeNotifierProvider(create: (context) => AdminHome()),
+      ],
+      child: (MaterialApp(
+        initialRoute: LoginScreen.id,
+        routes: {
+          HomePage.id: (context) => HomePage(),
+          EditScreen.id: (context) => EditScreen(),
+          AddProduct.id: (context) => AddProduct(),
+          AdminPage.id: (context) => AdminPage(),
+          LoginScreen.id: (context) => LoginScreen(),
+          SignUpScreen.id: (context) => SignUpScreen(),
+        },
+      )),
+    ),
+  );
 }
