@@ -2,6 +2,7 @@ import 'package:e_commerce_app/provider/adminhome.dart';
 import 'package:e_commerce_app/provider/modelhud.dart';
 import 'package:e_commerce_app/screens/addproduct.dart';
 import 'package:e_commerce_app/screens/adminpage.dart';
+import 'package:e_commerce_app/screens/editproduct.dart';
 import 'package:e_commerce_app/screens/editscreen.dart';
 import 'package:e_commerce_app/screens/homepage.dart';
 import 'package:e_commerce_app/screens/login_screen.dart';
@@ -27,6 +28,7 @@ void main() async {
         routes: {
           HomePage.id: (context) => HomePage(),
           EditScreen.id: (context) => EditScreen(),
+          EditProduct.id: (context) => EditProduct(),
           AddProduct.id: (context) => AddProduct(),
           AdminPage.id: (context) => AdminPage(),
           LoginScreen.id: (context) => LoginScreen(),

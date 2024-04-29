@@ -1,9 +1,9 @@
+import 'package:e_commerce_app/screens/editproduct.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/services/store.dart';
 
 class EditScreen extends StatefulWidget {
   static String id = "EditScreen";
-
   createState() {
     return _EditScreenState();
   }
@@ -42,7 +42,10 @@ class _EditScreenState extends State<EditScreen> {
                                 PopupMenuItem(
                                     child: Text('Edit'),
                                     onTap: () {
-                                      print(" hello world");
+                                      print(document.id);
+                                      Navigator.pushNamed(
+                                          context, EditProduct.id,
+                                          arguments: document.id);
                                     }),
                                 PopupMenuItem(
                                   child: Text('Delete'),

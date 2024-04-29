@@ -1,17 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Models/product.dart';
 import 'package:e_commerce_app/services/store.dart';
 import 'package:e_commerce_app/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-class AddProduct extends StatefulWidget {
-  static String id = "AddProduct";
-
+class EditProduct extends StatefulWidget {
+  static String id = "EditProduct";
   @override
-  State<AddProduct> createState() => _AddProductState();
+  State<EditProduct> createState() => _EditProductState();
 }
 
-class _AddProductState extends State<AddProduct> {
+class _EditProductState extends State<EditProduct> {
   String _name = "",
       _price = "",
       _description = "",
@@ -21,6 +19,8 @@ class _AddProductState extends State<AddProduct> {
   final globalKey = new GlobalKey<FormState>();
 
   Widget build(context) {
+    final _id = ModalRoute.of(context)!.settings.arguments;
+    print(_id);
     return Scaffold(
       body: Form(
         key: globalKey,
@@ -83,16 +83,20 @@ class _AddProductState extends State<AddProduct> {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();
                     final store = new Store();
-                    store.AddProduct(Product(
-                        pCategory: _category,
-                        pDescription: _description,
-                        pLocation: _location,
-                        pName: _name,
-                        pPrice: _price) as Product);
+                    print(_id);
+                    print(_category);
+                    store.editProduct({
+                      'productcategory': _category,
+                      'description': _description,
+                      'location': _location,
+                      'productname': _name,
+                      'price': _price
+                    }, _id);
+                    print(" i am here");
                   }
-                  globalKey.currentState!.reset();
+                  // globalKey.currentState!.reset();
                 },
-                child: Text('Add Product'))
+                child: Text('Modify Product'))
           ],
         ),
       ),

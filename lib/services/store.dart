@@ -20,4 +20,8 @@ class Store {
   deleteProduct(documentId) {
     _firestore.collection("product").doc(documentId).delete();
   }
+
+  editProduct(data, documentId) {
+    _firestore.collection("product").doc(documentId).update(data);
+  }
 }
