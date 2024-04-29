@@ -16,4 +16,8 @@ class Store {
   Stream<QuerySnapshot<Object?>> loadProduct() {
     return _firestore.collection("product").snapshots();
   }
+
+  deleteProduct(documentId) {
+    _firestore.collection("product").doc(documentId).delete();
+  }
 }
