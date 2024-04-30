@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/Models/product.dart';
 import 'package:e_commerce_app/services/store.dart';
 import 'package:e_commerce_app/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -83,8 +82,7 @@ class _EditProductState extends State<EditProduct> {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();
                     final store = new Store();
-                    print(_id);
-                    print(_category);
+                  
                     store.editProduct({
                       'productcategory': _category,
                       'description': _description,
@@ -92,7 +90,6 @@ class _EditProductState extends State<EditProduct> {
                       'productname': _name,
                       'price': _price
                     }, _id);
-                    print(" i am here");
                   }
                   // globalKey.currentState!.reset();
                 },

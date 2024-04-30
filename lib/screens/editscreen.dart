@@ -14,7 +14,7 @@ class _EditScreenState extends State<EditScreen> {
   Widget build(context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: store.loadProduct(),
+          stream: store.loadProductAll(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return CircularProgressIndicator();

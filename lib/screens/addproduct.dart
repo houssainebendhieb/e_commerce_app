@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Models/product.dart';
 import 'package:e_commerce_app/services/store.dart';
 import 'package:e_commerce_app/widget/custom_textfield.dart';

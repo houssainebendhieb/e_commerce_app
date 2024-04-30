@@ -13,7 +13,14 @@ class Store {
     });
   }
 
-  Stream<QuerySnapshot<Object?>> loadProduct() {
+  Stream<QuerySnapshot<Object?>> loadProduct(String category) {
+    return _firestore
+        .collection("product")
+        .where("productcategory", isEqualTo: category)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot<Object?>> loadProductAll() {
     return _firestore.collection("product").snapshots();
   }
 
