@@ -1,4 +1,6 @@
-import 'package:e_commerce_app/services/auth.dart';
+import 'package:e_commerce_app/Models/product.dart';
+import 'package:e_commerce_app/screens/user/cartscreen.dart';
+import 'package:e_commerce_app/screens/user/productinfo.dart';
 import 'package:e_commerce_app/services/store.dart';
 import 'package:flutter/material.dart';
 
@@ -10,20 +12,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _auth = new Auth();
-
   final _store = new Store();
-
-  var _loggedUser;
 
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
-  }
-
-  getCurrentUser() async {
-    _loggedUser = await _auth.getUser();
   }
 
   Widget ViewProduct(String category) {
@@ -44,10 +37,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: GestureDetector(
                       onTapUp: (details) {
-                        var dx = details.globalPosition.dx;
-                        var dy = details.globalPosition.dy;
-                        var dx2 = MediaQuery.sizeOf(context).width - dx;
-                        var dy2 = MediaQuery.sizeOf(context).width - dy;
+                        Product product = new Product(
+                            pCategory: document['productcategory'],
+                            pDescription: document['description'],
+                            pLocation: document['location'],
+                            pName: document['productname'],
+                            pPrice: document['price']);
+                        Navigator.pushNamed(context, ProductInfo.id,
+                            arguments: product);
                       },
                       child: Stack(
                         children: [
@@ -164,7 +161,11 @@ class _HomePageState extends State<HomePage> {
                 Text('Discover'.toUpperCase(),
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Icon(Icons.shopping_cart)
+                GestureDetector(
+                    child: Icon(Icons.shopping_cart),
+                    onTap: () {
+                      Navigator.pushNamed(context, CartScreen.id);
+                    })
               ],
             ),
           ),

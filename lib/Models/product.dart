@@ -4,9 +4,10 @@ class Product {
   String pLocation;
   String pDescription;
   String pCategory;
-
+  int pQuantity;
   Product(
-      {required this.pCategory,
+      {this.pQuantity = 0,
+      required this.pCategory,
       required this.pDescription,
       required this.pLocation,
       required this.pName,

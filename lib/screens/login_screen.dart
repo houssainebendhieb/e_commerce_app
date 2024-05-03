@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/provider/adminhome.dart';
 import 'package:e_commerce_app/provider/modelhud.dart';
-import 'package:e_commerce_app/screens/adminpage.dart';
+import 'package:e_commerce_app/screens/admin/adminpage.dart';
 import 'package:e_commerce_app/screens/homepage.dart';
 import 'package:e_commerce_app/screens/signup_screen.dart';
 import 'package:e_commerce_app/widget/custom_textfield.dart';
